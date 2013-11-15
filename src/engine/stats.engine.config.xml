@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<!--
+
+	Fichier de configuration du TemplateEngine
+
+-->
+<conf>
+
+	<!-- Configuration des pages -->
+	<pages>
+		<!-- page index.php -->
+		<page name="index">
+			<title>Welcome !!</title>
+			<description>This is my pretty website ! I love php (and lisp) !</description>
+			<template>template.default</template>
+		</page>
+
+		<page name="notfound">
+			<title>404 error!</title>
+			<description>blabla</description>
+			<template>template.default</template>
+		</page>
+	</pages>
+
+	<!-- Configuration des templates -->
+	<templates>
+		<!-- template mainTemplate -->
+		<template name="template.default">
+			<var name="header_var" cache_duration="0" widget="header">
+			</var>
+			<var name="footer_var" cache_duration="3000" widget="footer">
+			</var>
+		</template>
+	</templates>
+
+	<!-- Configuration des widgets -->
+	<widgets>
+		<widget name="search" cache_duration="10">
+			<param name="url_param_get" method="get">var_nam_urlparam</param>
+		</widget>
+	</widgets>
+
+</conf>
