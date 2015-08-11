@@ -1,19 +1,17 @@
 <?php
-  session_start();
+	define('ERROR_LOG_FILE', 'error.log');
+	define('ERROR_LOG_ALL', true);
 
-  require_once 'inc/fct.inc.php';
-  require_once 'engine/TemplateEngine.class.php';
+	session_start();
 
-  $t = new TemplateEngine();
+	require_once 'engine/Engine.class.php';
+	require_once 'engine/EngineException.class.php';
 
-
-  /*Example*/
-
-  $contenu = new View('welcome', 'content');
-  $t->addWidget($contenu);
-
-  $contenu = new Widget('header', 0*3600, 'header');
-  $contenu->assign();
-
-  $t->display();
+	try{
+		$e = new Engine($_GET['page']);
+		$e->display();
+	} catch(EngineException $e){
+	 	echo $e;
+	 	exit();
+	}
 ?>

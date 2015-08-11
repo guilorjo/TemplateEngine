@@ -5,11 +5,10 @@
 * @author Guillaume Marques <guillaume.marques33@gmail.com>
 * @author Kevin Barreau <kevin.barreau.info@gmail.com>
 *
-* LR 25/01/2013
+* LR 15/08/2015
 */
 
-define( '__DIVSTYLE__' , 'background: #ffbcc1; width: 800px; margin: 100px auto 100px auto; border-radius: 5px; padding: 30px; border: 1px solid #c6000d;');
-define( '__MAILPOSTMASTER__', 'postmaster@yt-stats.com');
+require_once 'config/global_vars.php';
 
 class EngineException extends ErrorException
 {
@@ -21,19 +20,25 @@ class EngineException extends ErrorException
 
 	public function __toString()
 	{
-    
-    	$html = '<div style="'.__DIVSTYLE__.'">';
-		$html .= 'Oooops! An error has occurred! <br /> Please, reload the page or send a mail at  <b>'.__MAILPOSTMASTER__;
-		$html .= '</b> containing the following message: <br /><br />';
 
-		$html .= '<br />[SEVE] '.$this->severity;
-		$html .= '<br />[MESS] '.$this->message;
-		$html .= '<br />[LOCA] '.$this->file.'  line '.$this->line.'<br /><br />';
+    	$content = '<div class="container"><br /><br /><br /><div class="alert alert-danger">';
+		$content .= 'Oooops! An error has occurred! <br /> Please, reload the page or send a mail at  <b>'.MAIL_POSTMASTER;
+		$content .= '</b> containing the following message: <br /><br />';
 
-		$html .= 'A developer will step in as soon as possible. Thanks! :)';
-		$html .='</div>';
+		$content .= '<br />[SEVE] '.$this->severity;
+		$content .= '<br />[MESS] '.$this->message;
+		$content .= '<br />[LOCA] '.$this->file.'  line '.$this->line.'<br /><br />';
 
-		return $html;
+		$content .= 'A developer will step in as soon as possible. Thanks!';
+		$content .='</div></div>';
+
+		ob_start();
+		include HTML_ERROR;
+
+		$result = ob_get_contents();
+
+		ob_end_clean();
+		return $result;
 	}
 }
 

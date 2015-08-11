@@ -4,10 +4,11 @@
  * Widget ne contenant pas de modèle mais uniquement une vue
  *
  * @author Guillaume Marques <guillaume.marques33@gmail.com>
- * LR 07/01/2013
+ * LR 11/08/2015
  *
  **/
 
+require_once 'config/global_vars.php';
 require_once 'Widget.class.php';
 require_once 'inc/fct.inc.php';
 
@@ -54,7 +55,7 @@ class View extends Widget
 
 		echo '<!-- Generation: '.date('d/m/Y H:i:s').'  -- Widget: '.$this->_name.' -->';
 
-		include __VIEWPATH__.$this->_view.'.php';	
+		include VIEW_PATH.$this->_view.'.php';	
 
 		$html = ob_get_contents();
 

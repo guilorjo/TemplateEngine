@@ -1,0 +1,68 @@
+{ "home" : 
+	{ "meta" :
+		{ "title" : "Welcome ! ",
+		  "description" : "description du site"
+		},
+
+	  "template" : "template.default",
+
+	  "scripts" : 
+	  		["http://www.bandsintown.com/javascripts/bit_widget.js"],
+
+	  "styles" :
+	  		[],
+
+	  "widgets" :
+	  		{ "header" : { "name" : "header", "model" : true } 
+	  		},
+
+	  "pannels" :
+	  		{ "pannel1" : 
+	  			[ {"name" : "won", "width" : 4, "model" : false },
+	  			  {"name" : "won", "width" : 4, "model" : false },
+	  			  {"name" : "ful", "width" : 4, "model" : false } ]
+	  		}
+	},
+
+  "test" :
+  	{ "meta" :
+		{ "title" : "Page test",
+		  "description" : "description du site"
+		},
+
+	  "template" : "template.default",
+
+	  "scripts" : 
+	  		[],
+
+	  "styles" :
+	  		[],
+
+	  "widgets" :
+	  		{},
+
+	  "pannels" :
+	  		{}
+	},
+
+	"error404" :
+	{  "meta" :
+		{ "title" : "Page does not exist",
+		  "description" : "This a 404 error !"
+		},
+
+		"template" : "template.default",
+		
+		"scripts" : 
+	  		[],
+
+	  	"styles" :
+	  		[],
+
+	  	"widgets" :
+	  		{},
+
+	  	"pannels" :
+	  		{}
+	}
+}

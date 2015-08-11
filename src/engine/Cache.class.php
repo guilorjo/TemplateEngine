@@ -6,12 +6,10 @@
  *
  * @author Guillaume Marques <guillaume.marques33@gmail.com>
  * @author Kévin Barreau <kevin.barreau.info@gmail.com>
- * LR 03/07/2013
+ * LR 10/08/2015
 **/
 
-define( "__CACHEPATH__", 'cache/');
-define( "__CACHEEXT__", '.ca' );
-
+require_once 'config/global_vars.php';
 
 class Cache
 {
@@ -31,14 +29,10 @@ class Cache
 	function __construct($namepage, $duration)
 	{
 		$this->_name = $namepage;
-		$this->_path = __CACHEPATH__.$this->_name.__CACHEEXT__;
+		$this->_path = CACHE_PATH.$this->_name.CACHE_EXT;
 		$this->_duration= $duration;
 
-		//if(!file_exists($this->_path))
-		//	file_put_contents($this->_path, 'null');
-
 		$this->_cacheCreation = time();
-
 	}
 
 	/**
@@ -52,7 +46,7 @@ class Cache
 	public function params($key, $value)
 	{
 		$this->_name .= '_'.addslashes($key).':'.addslashes($value);
-		$this->_path = __CACHEPATH__.$this->_name.__CACHEEXT__;
+		$this->_path = CACHE_PATH.$this->_name.CACHE_EXT;
 	}
 
 	/**

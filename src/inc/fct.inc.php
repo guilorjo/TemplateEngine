@@ -14,23 +14,6 @@ function randomName($taille) //Utilisée par TemplateEngine
 }
 
 
-function templateEngine_minification($buffer)
-{
-	//Minification
-    $search = array(
-        '/ {2,}/',
-        '/<!--.*?-->|\t|(?:\r?\n[ \t]*)+/s'
-    );
-
-    $replace =  array(
-        ' ',
-        ''
-    );
-    $buffer = preg_replace($search, $replace, $buffer);
-
-    return $buffer;
-}
-
 
 
 //Permet de traduire le texte balisé avec {t}
