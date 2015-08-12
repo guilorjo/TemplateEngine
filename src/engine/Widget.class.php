@@ -23,19 +23,36 @@ class Widget
 	protected $_cache; //Cache du widget
 	protected $_content = array(); //Contenu du widget
 
+	static protected $_config;
+	protected $_my_config;
+
 	/**
 	 * __construct
 	 *
 	 * @param String::name, nom du widget
 	 * @param String::var, variable qui contiendra ce widget
 	**/
-	function __construct($position, $name, $cacheDuration=0)
-	{
+	function __construct($position, $name){
 		$this->_position = $position;
 		$this->_name= $name;
 
-		if($cacheDuration>60)
-			$this->_cache = new Cache($name, $cacheDuration);
+		if(!isset(self::$_config)){
+			if( (self::$_config = file_get_contents(WIDGETS_CONFIG, FILE_USE_INCLUDE_PATH)) === FALSE ){
+				throw new EngineException("Impossible d'ouvrir le fichier de configuration des widgets.");
+			}
+			self::$_config = json_decode(self::$_config,TRUE);
+		}
+
+		if(isset(self::$_config[$this->_name])){
+			$this->_my_config = self::$_config[$this->_name];
+		} else {
+			throw new EngineException("Pas de configuration définie pour le widget ".$this->_name);
+		}
+
+		if($this->_my_config['cache_duration'] >60){
+			$this->_cache = new Cache($name, $this->_my_config['cache_duration']);
+		}
+
 	}
 
 	/**
@@ -60,24 +77,6 @@ class Widget
 		return $this->_content;
 	}
 
-	/**
-	 * getWidget
-	 * Retourne le tableau des widgets inclus sous la forme :
-	 * name => cacheDuration => 3600
-	 *      => content => array getContent()
-	 *      => widget => arrau getWidget()
-	**/
-	public function getWidget()
-	{
-		$array = array();
-		foreach ($this->_widget as $k => $v)
-		{
-			$array[$k]['cacheDuration'] = $v->getCacheDuration();
-			$array[$k]['content'] = $v->getContent();
-			$array[$k]['widget'] = $v->getWidget();
-		}
-		return $array;
-	}
 
 	/**
 	 * assign
@@ -122,17 +121,21 @@ class Widget
 		extract($this->_content);
 
 		ob_start(); //On démarre le cache
-
 		echo '<!-- Generation: '.date('d/m/Y H:i:s').'  -- Widget: '.$this->_name.' -->';
-		include WIDGET_PATH.'/'.$this->_name.'/'.MODEL_FILE;
-		include WIDGET_PATH.'/'.$this->_name.'/'.VIEW_FILE;
-
+		if($this->_my_config['view']){
+			include VIEW_PATH.$this->_name.VIEW_EXT;
+		} else {
+			include WIDGET_PATH.$this->_name.'/'.MODEL_FILE;
+			include WIDGET_PATH.$this->_name.'/'.VIEW_FILE;
+		}
 		$result = ob_get_contents();
-
 		ob_end_clean();
 
-		if(isset($this->_cache))
-			$this->_cache->updateCacheContent($result);
+		if(isset($this->_cache)){
+			if($this->_cache->updateCacheContent($result) === FALSE){
+				throw new EngineException("Impossible de mettre à jour le cache.");
+			}
+		}
 
 		return $result;
 	}

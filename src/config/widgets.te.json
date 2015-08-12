@@ -1,0 +1,30 @@
+{ "header" : 
+	{ "cache_duration" : 3600,
+	  "view" : false,
+	  "ajax" : false,
+	  "authentification" : false,
+	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [] }
+	},
+
+  "won" : 
+	{ "cache_duration" : 0,
+	  "view" : true,
+	  "ajax" : false,
+	  "authentification" : false,
+	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [] }
+	},
+
+  "ful" : 
+	{ "cache_duration" : 1000,
+	  "view" : true,
+	  "ajax" : false,
+	  "authentification" : false,
+	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [] }
+	}
+}

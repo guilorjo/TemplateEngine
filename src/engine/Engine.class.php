@@ -33,7 +33,6 @@ class Engine
 	 * @param name, nom de la page (facultatif)
 	**/
 	function __construct($page = null){
-
 		$this->_name = (!is_null($page))? $page : HOME_PAGE;
 
 		if(($json = file_get_contents(PAGES_CONFIG,  FILE_USE_INCLUDE_PATH)) !== FALSE ){
@@ -85,8 +84,7 @@ class Engine
 	 * @param $widget
 	 *			Widget de destination de ces données
 	**/
-	public function assignToWidget($data=array(), $widget)
-	{
+	public function assignToWidget($data=array(), $widget){
 		$this->_widgets[$widget]->assign($data);
 	}
 
@@ -96,15 +94,13 @@ class Engine
 	 * Retourne le contenu d'une variable provenant du fichier de configuration
 	 * La variable peut être en GET, en POST ou normal (default)
 	**/
-	private function getParam($method='default', $name=NULL)
-	{
+	private function getParam($method='default', $name=NULL){
 		$method = strtolower($method);
-		if(empty($name))
-		{
+		if(empty($name)){
 			return NULL;
 		}
-		switch($method)
-		{
+
+		switch($method){
 			case 'get':
 				return isset($_GET[(string)$name]) ? htmlentities($_GET[(string)$name]) : NULL;
 
@@ -151,39 +147,30 @@ class Engine
 		$html = array();
 
 		//On récupère l'affichage de tous les widgets
-		if( count($this->_widgets) > 0)
-		{
-			foreach($this->_widgets as $widget)
-			{
+		if( count($this->_widgets) > 0){
+			foreach($this->_widgets as $widget){
 				$html[$widget->getPosition()]= $widget->getHTML();
 			}
 		}
 
 		//On récupère l'affichage de tous les widgets
-		if( count($this->_pannels) > 0)
-		{
-			foreach($this->_pannels as $pannel)
-			{
+		if( count($this->_pannels) > 0){
+			foreach($this->_pannels as $pannel){
 				$html[$pannel->getPosition()]= $pannel->getHTML();
 			}
 		}
 		extract($html); //Extraction de l'html 
 
 		ob_start(); //Ouverture du tampon
-		include VIEW_PATH.$this->_config['template'].'.php'; //On insère le template
-
+		include TEMPLATE_PATH.$this->_config['template'].'.php'; //On insère le template
 		$content = ob_get_contents();
-
 		ob_end_clean(); //Fermeture + nettoyage tampon
 
 		ob_start();
 		include HTML_DEFAULT;
-
 		$result = ob_get_contents();
-
 		ob_end_clean();
-		$result = Page::minification($result);
 
-		echo $result; //On affiche le résultat
+		echo Page::minification($result); //On affiche le résultat
 	}
 }

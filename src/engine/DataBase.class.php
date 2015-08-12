@@ -10,7 +10,7 @@ require_once 'config/global_vars.php';
 
 class DataBase {
 
-    private static $_instance = null;
+    private static $_instance;
 
     private function __construct() {  
         if($db_link = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_BASE)){
@@ -21,8 +21,8 @@ class DataBase {
     }
 
     public static function getLink() {
-        if(is_null(self::$_instance)) {
-            self::$_instance = new DataBase();  
+        if(!isset(self::$_instance)) {
+            self::$_instance = new self();  
         }
         return self::$_instance;
     }

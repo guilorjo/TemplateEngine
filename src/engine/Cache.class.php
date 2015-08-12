@@ -82,9 +82,9 @@ class Cache
 	**/
 	public function updateCacheContent($c)
 	{
-		if($this->isCacheExpired() || ($this->getCacheContent()!=$c))
-			if(file_put_contents($this->_path, $c))
-				return TRUE;
+		if($this->isCacheExpired() || ($this->getCacheContent()!=$c)){
+			return file_put_contents($this->_path, $c, LOCK_EX);
+		}
 		return FALSE;
 	}
 }

@@ -18,9 +18,9 @@
 
 	  "pannels" :
 	  		{ "pannel1" : 
-	  			[ {"name" : "won", "width" : 4, "model" : false },
-	  			  {"name" : "won", "width" : 4, "model" : false },
-	  			  {"name" : "ful", "width" : 4, "model" : false } ]
+	  			[ {"name" : "won", "width" : 4 },
+	  			  {"name" : "won", "width" : 4 },
+	  			  {"name" : "ful", "width" : 4 } ]
 	  		}
 	},
 

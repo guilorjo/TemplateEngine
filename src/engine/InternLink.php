@@ -17,7 +17,6 @@ class InternLink {
 
 	}
 
-
 	public static function get($page, $params){
 		$link = HTTP_HOST.$page
 		foreach($params as $key => $value){
