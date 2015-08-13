@@ -5,7 +5,8 @@
 	  "authentification" : false,
 	  "parameters" : 
 	  		{ "get" : [],
-	  		  "post" : [] }
+	  		  "post" : [],
+	  		  "vars" : {} }
 	},
 
   "won" : 
@@ -15,7 +16,8 @@
 	  "authentification" : false,
 	  "parameters" : 
 	  		{ "get" : [],
-	  		  "post" : [] }
+	  		  "post" : [],
+	  		  "vars" : {} }
 	},
 
   "ful" : 
@@ -25,6 +27,7 @@
 	  "authentification" : false,
 	  "parameters" : 
 	  		{ "get" : [],
-	  		  "post" : [] }
+	  		  "post" : [],
+	  		  "vars" : {} }
 	}
 }

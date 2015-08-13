@@ -3,7 +3,7 @@
 define( "HTTP_HOST", 'http://127.0.0.1');
 define( "WEBROOT", $_SERVER['DOCUMENT_ROOT'].'/');
 
-
+define( "STATIC_IMG", '/static/img/');
 define( "TEMPLATE_PATH", 'templates/');
 define( "VIEW_PATH", 'views/');
 define( "WIDGET_PATH", 'widgets/');
@@ -24,7 +24,7 @@ define( "ERROR_404", 'error404');
 define( "HTML_DEFAULT", 'templates/html5_struct/html5.default.php');
 define( "HTML_ERROR", 'templates/html5_struct/html5.error.php');
 
-define( 'MAIL_POSTMASTER', 'contact@hlm.band');
+define( 'MAIL_POSTMASTER', 'contact@site.com');
 
 define( "DB_HOST", '');
 define( "DB_BASE", '');

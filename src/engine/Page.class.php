@@ -34,7 +34,7 @@ class Page {
 	public static function addCSSDocuments($css){
 		$str = '';
 		foreach($css as $key => $value){
-			$str .= '<link rel="stylesheet" type="text/css" href="'.htmlentities($css).'" media="screen"/>';
+			$str .= '<link rel="stylesheet" type="text/css" href="'.htmlentities($value).'" media="screen"/>';
 		}
 		return $str;
 	}

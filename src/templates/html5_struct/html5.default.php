@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
+	<meta charset="UTF-8">
 	<?= $meta ?>
 
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet">

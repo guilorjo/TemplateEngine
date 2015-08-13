@@ -10,11 +10,15 @@
 class Pannel {
 
 	private $_position;
-	private $_widgets = array(); // widget_name => widget
-	private $_width = array();  // widget_name => width
+	private $_widgets;
+	private $_width;
+	private $_class;
 
 	function __construct($position){
 		$this->_position = $position;
+		$this->_widgets = array();
+		$this->_width = array();
+		$this->_class = array();
 	}
 
 
@@ -34,7 +38,7 @@ class Pannel {
 	 *
 	 *
 	 **/
-	public function addWidget($w, $l){
+	public function addWidget($w, $l, $c=''){
 		if($this->getPannelWidth() + $l > 12){
 			throw new EngineException("Pannel width can't be superior to 12");
 		}
@@ -42,6 +46,7 @@ class Pannel {
 		if($w instanceof Widget){
 			$this->_widgets[] = $w;
 			$this->_width[] = $l;
+			$this->_class[] = $c;
 		} else {
 			throw new EngineException("addWidget($w), le paramètre n\'est pas du type Widget.");
 		}
@@ -53,7 +58,7 @@ class Pannel {
 
 		echo '<div class="row">';
 		foreach( $this->_widgets as $i => $widget){
-			echo '<div class="col-md-'.$this->_width[$i].'">';
+			echo '<div class="col-md-'.$this->_width[$i].' '.$this->_class[$i].'">';
 			echo $widget->getHTML();
 			echo '</div>';
 		}

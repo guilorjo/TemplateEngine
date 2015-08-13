@@ -14,6 +14,8 @@ date_default_timezone_set('Europe/Paris');
  
 require_once 'config/global_vars.php';
 require_once 'Cache.class.php';
+require_once 'InternLink.class.php';
+require_once 'DataBase.class.php';
 require_once 'inc/fct.inc.php';
 
 class Widget
@@ -21,7 +23,7 @@ class Widget
 	protected $_position; //Place du widget
 	protected $_name; //Nom du widget
 	protected $_cache; //Cache du widget
-	protected $_content = array(); //Contenu du widget
+	protected $_content;//Contenu du widget
 
 	static protected $_config;
 	protected $_my_config;
@@ -32,9 +34,10 @@ class Widget
 	 * @param String::name, nom du widget
 	 * @param String::var, variable qui contiendra ce widget
 	**/
-	function __construct($position, $name){
+	function __construct($position, $name = null){
 		$this->_position = $position;
-		$this->_name= $name;
+		$this->_name = (is_null($name))? $position : $name;
+		$this->_content = array();
 
 		if(!isset(self::$_config)){
 			if( (self::$_config = file_get_contents(WIDGETS_CONFIG, FILE_USE_INCLUDE_PATH)) === FALSE ){
@@ -43,10 +46,10 @@ class Widget
 			self::$_config = json_decode(self::$_config,TRUE);
 		}
 
-		if(isset(self::$_config[$this->_name])){
+		if(is_string($this->_name) && isset(self::$_config[$this->_name])){
 			$this->_my_config = self::$_config[$this->_name];
 		} else {
-			throw new EngineException("Pas de configuration définie pour le widget ".$this->_name);
+			throw new EngineException("Erreur ou pas de configuration définie pour le widget ");
 		}
 
 		if($this->_my_config['cache_duration'] >60){

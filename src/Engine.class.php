@@ -136,7 +136,7 @@ class Engine
 		foreach($pannels as $pos => $content){
 			$pannel = new Pannel($pos);
 			foreach($content as $w){
-				$pannel->addWidget(new Widget($w['name']), $w['width'], $w['class']);
+				$pannel->addWidget(new Widget($w['name'],$w['name']), $w['width']);
 			}
 			$this->addPannel($pannel);
 		}
