@@ -56,6 +56,9 @@ class Widget
 			$this->_cache = new Cache($name, $this->_my_config['cache_duration']);
 		}
 
+		if(!empty($this->_my_config['parameters']['vars'])){
+			$this->assign($this->_my_config['parameters']['vars']);
+		}
 	}
 
 	/**

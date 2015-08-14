@@ -2,8 +2,6 @@
 	define('ERROR_LOG_FILE', 'error.log');
 	define('ERROR_LOG_ALL', true);
 
-	session_start();
-
 	require_once 'engine/Engine.class.php';
 	require_once 'engine/EngineException.class.php';
 	require_once 'config/global_vars.php';

@@ -13,8 +13,7 @@ require_once 'config/global_vars.php';
 class InternLink {
 	
 
-	function __construct($page, $params, $intern = true){
-
+	private function __construct(){
 	}
 
 	public static function get($page, $params=''){

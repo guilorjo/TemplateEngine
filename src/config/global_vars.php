@@ -1,7 +1,9 @@
 <?php
 
-define( "HTTP_HOST", 'http://127.0.0.1');
+define( "HTTP_HOST", 'http://127.0.0.1/');
 define( "WEBROOT", $_SERVER['DOCUMENT_ROOT'].'/');
+
+define( "AUTH_PAGE", 'login');
 
 define( "STATIC_IMG", '/static/img/');
 define( "TEMPLATE_PATH", 'templates/');
@@ -17,6 +19,7 @@ define( "VIEW_EXT", '.php');
 
 define( "PAGES_CONFIG", './config/pages.te.json');
 define( "WIDGETS_CONFIG", './config/widgets.te.json');
+define( "SESSIONS_CONFIG", './config/sessions.te.json');
 
 define( "HOME_PAGE", "index");
 define( "ERROR_404", 'error404');

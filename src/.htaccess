@@ -2,4 +2,4 @@ Options +FollowSymlinks
 RewriteEngine on
 
 RewriteRule	^([a-z]+)\/(.*)$ /index.php?page=$1&$2 [L]
-RewriteRule	^([a-z]+)\/?$ /index.php?page=$1 [L]
+RewriteRule	^([a-z]+)\/$ /index.php?page=$1 [L]

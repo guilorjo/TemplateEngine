@@ -18,7 +18,7 @@ require_once 'DataBase.class.php';
 require_once 'Page.class.php';
 require_once 'Pannel.class.php';
 require_once 'InternLink.class.php';
-;
+require_once 'Session.class.php';
 
 
 /* Classe */
@@ -29,6 +29,7 @@ class Engine
 
 	private $_widgets;
 	private $_pannels;
+	private $_session;
 
 	/**
 	 * __contruct
@@ -39,15 +40,21 @@ class Engine
 
 		if(($json = file_get_contents(PAGES_CONFIG,  FILE_USE_INCLUDE_PATH)) !== FALSE ){
 			$j_conf = json_decode($json,TRUE);
-			if(isset($j_conf[$this->_name])){
-				$this->_config = $j_conf[$this->_name];
-			} else {
+			if(!isset($j_conf[$this->_name])){
 				$this->_name = ERROR_404;
 			}
+			$this->_config = $j_conf[$this->_name];
 		} else {
 			throw new EngineException('Impossible de charger la configuration de la page');
 		}
 
+		$this->_session = Session::create();
+		if($this->_config['authentification'] != false){
+			if(!$this->_session->isset_session($this->_config['authentification'])){
+				$jeton = md5(md5($this->_config['authentification'].Session::getIp()));
+				header("Location: ".InternLink::get("connect", array("s" => $jeton)));
+			}
+		}
 		$this->run();
 	}	
 

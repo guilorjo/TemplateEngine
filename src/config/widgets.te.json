@@ -2,11 +2,11 @@
 	{ "cache_duration" : 3600,
 	  "view" : false,
 	  "ajax" : false,
-	  "authentification" : false,
+	  "authentification" : "administrator",
 	  "parameters" : 
 	  		{ "get" : [],
 	  		  "post" : [],
-	  		  "vars" : {} }
+	  		  "vars" : { "coucou" : "cuicui"} }
 	},
 
   "won" : 

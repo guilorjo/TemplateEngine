@@ -1,0 +1,5 @@
+{ "administrator" : 
+	{ "authentification" : true ,
+	  "data" : [ "id", "username", "mail"]
+	}
+}

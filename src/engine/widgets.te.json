@@ -1,0 +1,77 @@
+{ "header_menu" : 
+	{ "cache_duration" : 0,
+	  "view" : true,
+	  "ajax" : false,
+	  "authentification" : false,
+	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [],
+	  		  "vars" : {} }
+	},
+
+  "footer" : 
+	{ "cache_duration" : 0,
+	  "view" : true,
+	  "ajax" : false,
+	  "authentification" : false,
+	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [],
+	  		  "vars" : {} }
+	},
+
+  "intro_photo" :
+  	{ "cache_duration" : 0,
+  	  "view" : true,
+  	  "ajax" : false,
+  	  "authentification" : false,
+  	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [],
+	  		  "vars" : {} }
+	},
+
+	"mini_tourdates" :
+  	{ "cache_duration" : 0,
+  	  "view" : true,
+  	  "ajax" : false,
+  	  "authentification" : false,
+  	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [],
+	  		  "vars" : {} }
+	},
+
+	"fb_page_plugin" :
+  	{ "cache_duration" : 0,
+  	  "view" : true,
+  	  "ajax" : false,
+  	  "authentification" : false,
+  	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [],
+	  		  "vars" : {} }
+	},
+
+	"youtube_video" :
+  	{ "cache_duration" : 0,
+  	  "view" : true,
+  	  "ajax" : false,
+  	  "authentification" : false,
+  	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [],
+	  		  "vars" : {} }
+	},
+
+	"error404" : 
+	{ "cache_duration" : 0,
+  	  "view" : true,
+  	  "ajax" : false,
+  	  "authentification" : false,
+  	  "parameters" : 
+	  		{ "get" : [],
+	  		  "post" : [],
+	  		  "vars" : {} }
+	}
+}

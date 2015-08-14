@@ -13,15 +13,16 @@
 	  		[],
 
 	  "widgets" :
-	  		{ "header" : { "name" : "header", "model" : true } 
-	  		},
+	  		{ "header" : "header" },
 
 	  "pannels" :
 	  		{ "pannel1" : 
-	  			[ {"name" : "won", "width" : 4 },
-	  			  {"name" : "won", "width" : 4 },
-	  			  {"name" : "ful", "width" : 4 } ]
-	  		}
+	  			[ {"name" : "won", "width" : 4, "class" : ""},
+	  			  {"name" : "won", "width" : 4, "class" : "" },
+	  			  {"name" : "ful", "width" : 4, "class" : ""} ]
+	  		},
+
+	  	"authentification" : true
 	},
 
   "test" :
